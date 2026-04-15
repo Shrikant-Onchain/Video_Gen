@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0A0A0B;
+  --color-card-bg: #141417;
+  --color-accent: #FF5C00;
+  --color-accent-muted: rgba(255, 92, 0, 0.1);
+  --color-text-main: #E2E2E2;
+  --color-text-dim: #71717A;
+  --color-border: #27272A;
+
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-text-main font-sans antialiased;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply font-mono text-[11px] text-text-dim uppercase mb-5 flex items-center gap-2;
+  }
+
+  .section-label::before {
+    content: '';
+    @apply w-1 h-1 bg-accent;
+  }
+
+  .asset-slot {
+    @apply flex-1 border border-dashed border-border rounded-sm mb-4 flex flex-col items-center justify-center bg-card-bg relative overflow-hidden transition-colors duration-200;
+  }
+
+  .asset-slot.active {
+    @apply border-accent;
+  }
+
+  .analysis-card {
+    @apply bg-card-bg border border-border p-4 mb-3;
+  }
+
+  .btn {
+    @apply bg-accent text-white border-none p-4 font-bold uppercase tracking-wider cursor-pointer mt-auto text-[12px] transition-opacity hover:opacity-90 active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply bg-transparent border border-text-dim text-text-main mb-2 hover:border-text-main;
+  }
+}
